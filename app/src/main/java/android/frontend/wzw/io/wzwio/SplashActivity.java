@@ -5,6 +5,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -15,6 +19,8 @@ public class SplashActivity extends AppCompatActivity {
         setFullscreen();
 
         setContentView(R.layout.activity_splash);
+
+        setAnimation();
     }
 
     private void setFullscreen() {
@@ -25,12 +31,40 @@ public class SplashActivity extends AppCompatActivity {
         getSupportActionBar().hide();
     }
 
+    private void setAnimation() {
+        TextView title = (TextView) findViewById(R.id.textViewTitle);
+        ImageView logo = (ImageView) findViewById(R.id.imageViewLogo);
+
+        Animation animation = AnimationUtils.loadAnimation(this, R.anim.fade);
+
+        title.startAnimation(animation);
+        logo.startAnimation(animation);
+
+        animation.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                startActivity(new Intent(SplashActivity.this, MainActivity.class));
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
+
+    }
     @Override
     public void onUserInteraction() {
         super.onUserInteraction();
         Intent intent = new Intent(SplashActivity.this, MainActivity.class);
         startActivity(intent);
         finish();
+        
     }
 
 }
