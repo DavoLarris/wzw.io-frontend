@@ -53,9 +53,6 @@ public class CustomListAdapter extends BaseAdapter {
 
         Meetup meetup = meetups.get(position);
 
-        ImageView imageViewIcon = (ImageView) v.findViewById(R.id.idImage);
-        imageViewIcon.setImageResource(meetup.getPicture());
-
         TextView textViewTitle = (TextView) v.findViewById(R.id.idTitle);
         textViewTitle.setText(meetup.getTitle());
 

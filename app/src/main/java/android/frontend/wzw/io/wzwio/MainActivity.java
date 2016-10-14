@@ -27,8 +27,6 @@ public class MainActivity extends AppCompatActivity {
     private void setupData () {
         meetups = new ArrayList<Meetup>();
         meetups.add(new Meetup());
-        meetups.add(new Meetup());
-        meetups.add(new Meetup());
     }
 
 
