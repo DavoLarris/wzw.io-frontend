@@ -3,6 +3,7 @@ package android.frontend.wzw.io.wzwio;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.Animation;
@@ -11,6 +12,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class SplashActivity extends AppCompatActivity {
+    private ImageView logo;
+    private TextView title;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +23,9 @@ public class SplashActivity extends AppCompatActivity {
         setFullscreen();
 
         setContentView(R.layout.activity_splash);
+
+        title = (TextView) findViewById(R.id.textViewTitle);
+        logo = (ImageView) findViewById(R.id.imageViewLogo);
 
         setAnimation();
     }
@@ -32,9 +39,6 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     private void setAnimation() {
-        TextView title = (TextView) findViewById(R.id.textViewTitle);
-        ImageView logo = (ImageView) findViewById(R.id.imageViewLogo);
-
         Animation animation = AnimationUtils.loadAnimation(this, R.anim.fade);
 
         title.startAnimation(animation);
@@ -48,6 +52,8 @@ public class SplashActivity extends AppCompatActivity {
 
             @Override
             public void onAnimationEnd(Animation animation) {
+                logo.setVisibility(View.GONE);
+                title.setVisibility(View.GONE);
                 startActivity(new Intent(SplashActivity.this, MainActivity.class));
             }
 

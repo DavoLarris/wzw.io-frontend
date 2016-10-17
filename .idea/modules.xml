@@ -4,7 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Wzw.io.iml" filepath="$PROJECT_DIR$/Wzw.io.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/wzw.io-frontend.iml" filepath="$PROJECT_DIR$/wzw.io-frontend.iml" />
     </modules>
   </component>
