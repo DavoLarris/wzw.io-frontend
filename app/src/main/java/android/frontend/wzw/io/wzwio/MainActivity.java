@@ -1,8 +1,13 @@
 package android.frontend.wzw.io.wzwio;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -15,20 +20,24 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<Meetup> meetups;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.myToolbar);
+        toolbar.setTitle("WZW");
+        setSupportActionBar(toolbar);
+
         setupData();
         setupCustomList();
+
     }
 
     private void setupData () {
         meetups = new ArrayList<Meetup>();
         meetups.add(new Meetup());
     }
-
 
     private void setupCustomList() {
         CustomListAdapter customizedListAdapter = new CustomListAdapter(this, meetups);
@@ -38,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         listViewMeets.setAdapter(customizedListAdapter);
 
 
-        listViewPeople.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listViewMeets.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 Intent myIntent = new Intent(MainActivity.this, DetailActivity.class);
@@ -48,4 +57,30 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Intent myIntent;
+
+        switch (item.getItemId()) {
+            case R.id.action_settings:
+                myIntent = new Intent(MainActivity.this, PreferencesActivity.class);
+                startActivity(myIntent);
+
+            case R.id.action_about:
+                myIntent = new Intent(MainActivity.this, AboutActivity.class);
+                startActivity(myIntent);
+            default:
+                return super.onOptionsItemSelected(item);
+
+        }
+    }
+
 }
