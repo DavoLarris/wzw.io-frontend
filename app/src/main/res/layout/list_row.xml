@@ -31,7 +31,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
                     android:id="@+id/idImage"
-                    android:src="@drawable/zterrorg"
+                    android:src="@drawable/wzw"
                     android:scaleType="fitStart" />
             </LinearLayout>
 
