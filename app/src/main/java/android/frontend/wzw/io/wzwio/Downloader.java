@@ -23,11 +23,11 @@ public class Downloader extends AsyncTask<String, ArrayList<Meetup>, String> {
         attach(mainActivity);
     }
 
-    public void attach(MainActivity mainActivity){
+    public void attach(MainActivity mainActivity) {
         this.mainActivity = mainActivity;
     }
 
-    public void dettach(){
+    public void dettach() {
         this.mainActivity = null;
     }
 
@@ -35,6 +35,7 @@ public class Downloader extends AsyncTask<String, ArrayList<Meetup>, String> {
     protected String doInBackground(String... params) {
         JSONArray meetups;
         ArrayList<Meetup> meetupsList = new ArrayList<Meetup>();
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");  //IGUAL ESTO NO VA BIEN, REVISAAR SI FALLAN LAS FECHAS
 
         if (params.length > 0) {
             String url = params[0];
@@ -42,34 +43,38 @@ public class Downloader extends AsyncTask<String, ArrayList<Meetup>, String> {
             WebRequest web = new WebRequest();
 
             if (web.get(url)) {
-                try{
+                try {
                     meetups = new JSONArray(web.getResponseString());
                     for (int i = 0; i < meetups.length(); i++) {
                         JSONObject meetupObj = meetups.getJSONObject(i);
-                        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'"); //IGUAL ESTO NO VA BIEN, REVISAAR SI FALLAN LAS FECHAS
 
                         Date meetup_date = format.parse(meetupObj.getString("meetup_date"));
                         Date since = format.parse(meetupObj.getString("since"));
 
-                        meetupsList.add(i, new Meetup(meetupObj.getLong("id"),meetupObj.getString("name"), meetupObj.getString("description"), meetup_date, since, 0f, 0f));
+                        meetupsList.add(i, new Meetup(meetupObj.getLong("id"), meetupObj.getString("name"), meetupObj.getString("description"), meetup_date, since, 0f, 0f));
 
                         this.publishProgress(meetupsList);
                     }
 
-                } catch (JSONException ex){
+                } catch (JSONException ex) {
                     ex.printStackTrace();
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
-
             }
-
-
-
-
         } else {
-            return "";
+            meetupsList.add(0, new Meetup(1l, "Error", "Empty JSON: Error found", new Date(), new Date(), 0f, 0f));
+            this.publishProgress(meetupsList);
+            return "Error";
         }
 
+        return "Ok";
     }
+
+    public void onPostExecute(ArrayList<Meetup> meetupsList) {
+        this.mainActivity.setMeetups(meetupsList);
+    }
+
+
 }
+

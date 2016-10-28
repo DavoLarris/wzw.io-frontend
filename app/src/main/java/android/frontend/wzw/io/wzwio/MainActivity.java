@@ -26,25 +26,20 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        metodoAparte();
+        downloadJSON();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.myToolbar);
         toolbar.setTitle("WZW");
         setSupportActionBar(toolbar);
 
-        setupData();
         setupCustomList();
 
     }
 
-    private void metodoAparte(){
+    private void downloadJSON(){
         new Downloader(this).execute(URL);
     }
 
-    private void setupData () {
-        meetups = new ArrayList<Meetup>();
-        meetups.add(new Meetup());
-    }
 
     private void setupCustomList() {
         CustomListAdapter customizedListAdapter = new CustomListAdapter(this, meetups);
@@ -67,6 +62,9 @@ public class MainActivity extends AppCompatActivity {
 
     public ArrayList<Meetup> getMeetups () {
         return this.meetups;
+    }
+    public void setMeetups (ArrayList<Meetup> meetups) {
+        this.meetups = meetups;
     }
 
 
