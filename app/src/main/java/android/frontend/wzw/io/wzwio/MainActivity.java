@@ -18,12 +18,15 @@ public class MainActivity extends AppCompatActivity {
 
     private ListView listViewMeets;
     private ArrayList<Meetup> meetups;
+    private static final String URL = "http://wzw.io/web/admin/api/meetup";
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        metodoAparte();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.myToolbar);
         toolbar.setTitle("WZW");
@@ -32,6 +35,10 @@ public class MainActivity extends AppCompatActivity {
         setupData();
         setupCustomList();
 
+    }
+
+    private void metodoAparte(){
+        new Downloader(this).execute(URL);
     }
 
     private void setupData () {
@@ -57,6 +64,11 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
+    public ArrayList<Meetup> getMeetups () {
+        return this.meetups;
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
