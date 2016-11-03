@@ -7,10 +7,26 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:clickable="true"
     tools:context="android.frontend.wzw.io.wzwio.SplashActivity">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:layout_marginTop="20dp"
+        android:textSize="35dp"
+        android:textColor="#222222"
+        android:text="WZW.IO"
+        android:id="@+id/textViewTitle"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:id="@+id/imageViewLogo"
+        android:src="@drawable/wzw"
+        android:layout_below="@+id/textViewTitle"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>
