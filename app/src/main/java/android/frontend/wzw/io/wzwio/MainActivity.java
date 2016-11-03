@@ -3,8 +3,6 @@ package android.frontend.wzw.io.wzwio;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -14,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,16 +28,18 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         meetups = new ArrayList<Meetup>();
+        meetups.add(0, new Meetup(Long.valueOf(1), "test", "test", new Date(), new Date(), 0f, 0f));
+        meetups.add(0, new Meetup(Long.valueOf(1), "test", "test", new Date(), new Date(), 0f, 0f));
+
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
-        downloadJSON();
+        //downloadJSON();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.myToolbar);
         toolbar.setTitle("WZW");
         setSupportActionBar(toolbar);
 
         setupCustomList();
-
     }
 
     private void downloadJSON(){
