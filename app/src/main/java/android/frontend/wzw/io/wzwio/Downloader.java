@@ -51,7 +51,7 @@ public class Downloader extends AsyncTask<String, ArrayList<Meetup>, String> {
                         Date meetup_date = format.parse(meetupObj.getString("meetup_date"));
                         Date since = format.parse(meetupObj.getString("since"));
 
-                        meetupsList.add(i, new Meetup(meetupObj.getLong("id"), meetupObj.getString("name"), meetupObj.getString("description"), meetup_date, since, 0f, 0f));
+                        meetupsList.add(i, new Meetup(meetupObj.getLong("id"), meetupObj.getString("name"), meetupObj.getString("description"), meetup_date, since,(float) meetupObj.getLong("latitude"), (float) meetupObj.getLong("longitude")));
 
                         this.publishProgress(meetupsList);
                     }
