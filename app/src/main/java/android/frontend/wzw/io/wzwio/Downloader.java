@@ -1,7 +1,6 @@
 package android.frontend.wzw.io.wzwio;
 
 import android.os.AsyncTask;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -33,6 +32,7 @@ public class Downloader extends AsyncTask<String, ArrayList<Meetup>, String> {
 
     @Override
     protected String doInBackground(String... params) {
+
         JSONArray meetups;
         ArrayList<Meetup> meetupsList = new ArrayList<Meetup>();
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");  //IGUAL ESTO NO VA BIEN, REVISAAR SI FALLAN LAS FECHAS
