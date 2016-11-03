@@ -35,7 +35,7 @@ public class Downloader extends AsyncTask<String, ArrayList<Meetup>, String> {
 
         JSONArray meetups;
         ArrayList<Meetup> meetupsList = new ArrayList<Meetup>();
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");  //IGUAL ESTO NO VA BIEN, REVISAAR SI FALLAN LAS FECHAS
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
 
         if (params.length > 0) {
             String url = params[0];
