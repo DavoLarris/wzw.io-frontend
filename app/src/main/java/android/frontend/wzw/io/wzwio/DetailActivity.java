@@ -27,15 +27,15 @@ public class DetailActivity extends AppCompatActivity {
 
 
         //Person == Meetup
-        //Meetup = (Meetup) getIntent().getExtras().getSerializable("Meetup"); //getIntent().getSerializableExtra("Meetup")
+        Meetup meetup = (Meetup) getIntent().getExtras().getSerializable("Meetup"); //getIntent().getSerializableExtra("Meetup")
 
 
-        //if (Meetup != null) {
-        //    txtNombre.setText(Meetup.getName());
-        //    txtNombre.setText(Meetup.getDesc());
-        //    txtNombre.setText(Meetup.getCoord());
-       //     image.setImageResource(Meetup.getFoto());
-       // }
+        if (meetup != null) {
+            txtNombre.setText(meetup.getTitle());
+            txtDesc.setText(meetup.getDescription());
+            txtCoord.setText("Lat: " + meetup.getLatitude() + "Long: " + meetup.getLongitude());
+            //image.setImageResource(meetup.getWHATDOESTHISGET);
+        }
 
 
     }

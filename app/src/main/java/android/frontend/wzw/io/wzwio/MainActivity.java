@@ -10,15 +10,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-
 import java.util.ArrayList;
-import java.util.Date;
+
 
 public class MainActivity extends AppCompatActivity {
 
     private ListView listViewMeets;
     private ArrayList<Meetup> meetups;
-    private static final String URL = "http://wzw.io/web/admin/api/meetup";
+    //private static final String URL = "http://wzw.io/web/admin/api/meetup";
+    private static final String URL = "http://wzw.io/meetup.json";
 
 
     @Override
@@ -27,19 +27,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        meetups = new ArrayList<Meetup>();
-        meetups.add(0, new Meetup(Long.valueOf(1), "test", "test", new Date(), new Date(), 0f, 0f));
-        meetups.add(0, new Meetup(Long.valueOf(1), "test", "test", new Date(), new Date(), 0f, 0f));
-
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
-        //downloadJSON();
+        downloadJSON();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.myToolbar);
         toolbar.setTitle("WZW");
         setSupportActionBar(toolbar);
 
-        setupCustomList();
     }
 
     private void downloadJSON(){
@@ -47,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private void setupCustomList() {
+    public void setupCustomList() {
         CustomListAdapter customizedListAdapter = new CustomListAdapter(this, meetups);
 
         listViewMeets = (ListView) findViewById(R.id.idListView);

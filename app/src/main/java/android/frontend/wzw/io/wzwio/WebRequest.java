@@ -2,6 +2,7 @@ package android.frontend.wzw.io.wzwio;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
@@ -9,8 +10,11 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.Hashtable;
 
+
 /**
- * Created by DavoLarris on 28/10/2016.
+ * Simple class to make HTTP requests using standar java.net package
+ * @author Pello Xabier Altadill Izura
+ * @greetz 4 u
  */
 public class WebRequest {
     private String userAgent;
@@ -37,7 +41,7 @@ public class WebRequest {
         responseString = "";
         exceptionMessage = "";
         String line = "";
-
+        InputStream in = null;
 
         try {
             // Create an URL instance
@@ -46,18 +50,23 @@ public class WebRequest {
             // Create the HttpConnection
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestProperty("User-Agent", userAgent);
+            connection.setRequestProperty("Accept", "application/json");
             connection.setRequestMethod("GET");
+            connection.setDoOutput(false);
             setCookies(connection);
 
+            int status = connection.getResponseCode();
+            in = (status >= 400)?connection.getErrorStream():connection.getInputStream();
+
             // Get input stream from server
-            BufferedReader in = new BufferedReader(new InputStreamReader(
-                    connection.getInputStream()));
+            BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+
             // Read response from server
-            while ((line = in.readLine()) != null) {
+            while ((line = reader.readLine()) != null) {
                 responseString += line;
             }
 
-            in.close();
+            reader.close();
             return true;
 
         } catch (IOException e) {
@@ -68,12 +77,10 @@ public class WebRequest {
         }
 
         return false;
-
     }
 
     /**
      * makes POST request to URL
-     * @param urlString to request
      * @param parameters for POST
      * @return true if everything went fine, false otherwise
      */
@@ -84,13 +91,16 @@ public class WebRequest {
         String parameterValue = "";
         responseString = "";
         exceptionMessage = "";
+        InputStream in = null;
 
         try {
 
             URL url = new URL(urlString);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("POST");
+            connection.setRequestProperty("Accept", "application/json");
             connection.setRequestProperty("User-Agent", userAgent);
+
             connection.setDoOutput(true);
             setCookies(connection);
 
@@ -107,18 +117,22 @@ public class WebRequest {
             output.write(postString);
             output.close();
 
+
             // Now we get the response
-            BufferedReader in = new BufferedReader(
-                    new InputStreamReader(
-                            connection.getInputStream()));
+            int status = connection.getResponseCode();
+            in = (status >= 400)?connection.getErrorStream():connection.getInputStream();
+
+            // Get input stream from server
+            BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+
 
             getCookies(connection);
             responseCode = connection.getResponseCode();
 
-            while ((line = in.readLine()) != null) {
+            while ((line = reader.readLine()) != null) {
                 responseString += line;
             }
-            in.close();
+            reader.close();
             return true;
 
         } catch (IOException e) {
