@@ -17,8 +17,8 @@ public class MainActivity extends AppCompatActivity {
 
     private ListView listViewMeets;
     private ArrayList<Meetup> meetups;
-    //private static final String URL = "http://wzw.io/web/admin/api/meetup";
-    private static final String URL = "http://wzw.io/meetup.json";
+    private static final String URL = "http://wzw.io/web/admin/api/meetup";
+    //private static final String URL = "http://wzw.io/meetup.json";
 
 
     @Override
