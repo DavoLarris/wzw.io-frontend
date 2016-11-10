@@ -2,8 +2,7 @@ package android.frontend.wzw.io.wzwio;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -11,35 +10,39 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-
 import java.util.ArrayList;
+
 
 public class MainActivity extends AppCompatActivity {
 
     private ListView listViewMeets;
     private ArrayList<Meetup> meetups;
+    private static final String URL = "http://wzw.io/web/admin/api/meetup";
+    //private static final String URL = "http://wzw.io/meetup.json";
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+        downloadJSON();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.myToolbar);
         toolbar.setTitle("WZW");
         setSupportActionBar(toolbar);
 
-        setupData();
-        setupCustomList();
-
     }
 
-    private void setupData () {
-        meetups = new ArrayList<Meetup>();
-        meetups.add(new Meetup());
+    private void downloadJSON(){
+        new Downloader(this).execute(URL);
     }
 
-    private void setupCustomList() {
+
+    public void setupCustomList() {
         CustomListAdapter customizedListAdapter = new CustomListAdapter(this, meetups);
 
         listViewMeets = (ListView) findViewById(R.id.idListView);
@@ -57,6 +60,14 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
+    public ArrayList<Meetup> getMeetups () {
+        return this.meetups;
+    }
+    public void setMeetups (ArrayList<Meetup> meetups) {
+        this.meetups = meetups;
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
