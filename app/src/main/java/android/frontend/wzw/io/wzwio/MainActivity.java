@@ -3,6 +3,7 @@ package android.frontend.wzw.io.wzwio;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -35,10 +36,23 @@ public class MainActivity extends AppCompatActivity {
         toolbar.setTitle("WZW");
         setSupportActionBar(toolbar);
 
+        setFloatingButtonListener();
+
     }
 
     private void downloadJSON(){
         new Downloader(this).execute(URL);
+    }
+
+    public void setFloatingButtonListener(){
+        FloatingActionButton floatingActionButton = (FloatingActionButton) findViewById(R.id.fab);
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myIntent = new Intent(MainActivity.this, FormActivity.class);
+                startActivity(myIntent);
+            }
+        });
     }
 
 
