@@ -22,16 +22,12 @@ public class FormActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_form);
+        setContentView(R.layout.activity_form);
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.myToolbar);
-        toolbar.setTitle("WZW");
-        setSupportActionBar(toolbar);
 
     }
 
@@ -40,24 +36,6 @@ public class FormActivity extends AppCompatActivity {
         super.onCreateOptionsMenu(menu);
         getMenuInflater().inflate(R.menu.menu, menu);
         return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        Intent myIntent;
-
-        switch (item.getItemId()) {
-            case R.id.action_settings:
-                myIntent = new Intent(FormActivity.this, PreferencesActivity.class);
-                startActivity(myIntent);
-
-            case R.id.action_about:
-                myIntent = new Intent(FormActivity.this, AboutActivity.class);
-                startActivity(myIntent);
-            default:
-                return super.onOptionsItemSelected(item);
-
-        }
     }
 
 }
