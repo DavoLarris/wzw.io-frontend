@@ -6,104 +6,230 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
-    tools:context="android.frontend.wzw.io.wzwio.MainActivity"
-    android:weightSum="1">
-
-    <ImageView
-        android:layout_height="50dp"
-        app:srcCompat="@android:drawable/ic_menu_sort_by_size"
-        android:id="@+id/imageView6"
-        android:layout_width="42dp" />
+    android:weightSum="1"
+    tools:context="android.frontend.wzw.io.wzwio.MainActivity">
 
     <TextView
-        android:text="Título"
+        android:id="@+id/textView8"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textView8" />
+        android:text="Título" />
 
-    <EditText
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:id="@+id/editText2" />
+        android:fitsSystemWindows="true"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        tools:context="android.frontend.wzw.io.wzwio.MainActivity">
+
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="42dp"
+            android:layout_height="50dp"
+            app:srcCompat="@android:drawable/ic_menu_sort_by_size" />
+
+        <EditText
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName" />
+    </LinearLayout>
 
     <TextView
-        android:text="Descripción"
+        android:id="@+id/textView20"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textView20" />
+        android:text="Descripción" />
 
-    <EditText
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textMultiLine"
-        android:ems="10"
-        android:id="@+id/editText5" />
+        android:fitsSystemWindows="true"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        tools:context="android.frontend.wzw.io.wzwio.MainActivity">
 
-    <ImageView
-        android:layout_width="42dp"
-        android:layout_height="50dp"
-        app:srcCompat="@android:drawable/ic_menu_today"
-        android:id="@+id/imageView3" />
+        <ImageView
+            app:srcCompat="@android:drawable/ic_menu_sort_by_size"
+            android:id="@+id/imageView4"
+            android:layout_width="42dp"
+            android:layout_height="50dp" />
+
+        <EditText
+            android:id="@+id/description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textMultiLine" />
+
+    </LinearLayout>
 
     <TextView
-        android:text="Fecha inicio"
+        android:id="@+id/textView12"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textView21" />
+        android:text="Fecha inicio" />
 
-    <EditText
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="date"
-        android:ems="10"
-        android:id="@+id/editText6" />
+        android:fitsSystemWindows="true"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        tools:context="android.frontend.wzw.io.wzwio.MainActivity">
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="42dp"
+            android:layout_height="50dp"
+            app:srcCompat="@android:drawable/ic_menu_today" />
+
+        <EditText
+            android:id="@+id/date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="date"
+            android:layout_weight="1" />
+
+    </LinearLayout>
 
     <TextView
-        android:text="Fecha final"
+        android:id="@+id/textView22"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textView22" />
+        android:text="Hora inicio" />
 
-    <EditText
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="date"
-        android:ems="10"
-        android:id="@+id/editText7" />
+        android:fitsSystemWindows="true"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        tools:context="android.frontend.wzw.io.wzwio.MainActivity">
 
-    <ImageView
-        android:layout_width="42dp"
-        android:layout_height="50dp"
-        app:srcCompat="@android:drawable/ic_menu_mylocation"
-        android:id="@+id/imageView8" />
+        <ImageView
+            android:id="@+id/imageView7"
+            android:layout_width="42dp"
+            android:layout_height="50dp"
+            android:src="@android:drawable/ic_lock_idle_alarm" />
+
+        <EditText
+            android:id="@+id/time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="time"
+            android:layout_weight="1" />
+
+    </LinearLayout>
 
     <TextView
-        android:text="Latitud"
+        android:id="@+id/textView23"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textView23" />
+        android:text="Latitud" />
 
-    <EditText
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="numberDecimal"
-        android:ems="10"
-        android:id="@+id/editText8" />
+        android:fitsSystemWindows="true"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        tools:context="android.frontend.wzw.io.wzwio.MainActivity">
+
+        <ImageView
+            android:id="@+id/imageView8"
+            android:layout_width="42dp"
+            android:layout_height="50dp"
+            app:srcCompat="@android:drawable/ic_menu_mylocation" />
+
+        <EditText
+            android:id="@+id/latitude"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="numberDecimal" />
+    </LinearLayout>
 
     <TextView
-        android:text="Longitud"
+        android:id="@+id/textView24"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textView24" />
+        android:text="Longitud" />
 
-    <EditText
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="numberDecimal"
-        android:ems="10"
-        android:id="@+id/editText9" />
+        android:fitsSystemWindows="true"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        tools:context="android.frontend.wzw.io.wzwio.MainActivity">
 
+        <ImageView
+            app:srcCompat="@android:drawable/ic_menu_mylocation"
+            android:id="@+id/imageView5"
+            android:layout_width="42dp"
+            android:layout_height="50dp" />
+
+        <EditText
+            android:id="@+id/longuitude"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="numberDecimal" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView25"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Open" />
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        tools:context="android.frontend.wzw.io.wzwio.MainActivity">
+        <ImageView
+            app:srcCompat="@android:drawable/ic_menu_view"
+            android:id="@+id/imageView9"
+            android:layout_width="42dp"
+            android:layout_height="50dp" />
+
+        <ToggleButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="New ToggleButton"
+            android:id="@+id/open" />
+
+
+    </LinearLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="Add new event"
+        android:onClick="createEvent"
+        android:id="@+id/button"
+        android:layout_gravity="center_horizontal" />
 
 </LinearLayout>

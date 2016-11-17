@@ -51,7 +51,9 @@ public class Downloader extends AsyncTask<String, ArrayList<Meetup>, String> {
                         Date meetup_date = format.parse(meetupObj.getString("meetup_date"));
                         Date since = format.parse(meetupObj.getString("since"));
 
-                        meetupsList.add(i, new Meetup(meetupObj.getLong("id"), meetupObj.getString("name"), meetupObj.getString("description"), meetup_date, since,(float) meetupObj.getLong("latitude"), (float) meetupObj.getLong("longitude")));
+                        boolean open = meetupObj.getInt("open") == 0 ? false : true;
+
+                        meetupsList.add(i, new Meetup(meetupObj.getLong("id"), meetupObj.getString("name"), meetupObj.getString("description"), meetup_date, since,(float) meetupObj.getLong("latitude"), (float) meetupObj.getLong("longitude"), open));
 
                     }
                     this.publishProgress(meetupsList);
@@ -62,11 +64,11 @@ public class Downloader extends AsyncTask<String, ArrayList<Meetup>, String> {
                     e.printStackTrace();
                 }
             } else {
-                meetupsList.add(0, new Meetup(1l, "Grror get", "Empty JSON: Error found", new Date(), new Date(), 0f, 0f));
+                meetupsList.add(0, new Meetup(1l, "Error get", "Empty JSON: Error found", new Date(), new Date(), 0f, 0f, false));
                 return "get error";
             }
         } else {
-            meetupsList.add(0, new Meetup(1l, "Prror params", "Empty JSON: Error found", new Date(), new Date(), 0f, 0f));
+            meetupsList.add(0, new Meetup(1l, "Error params", "Empty JSON: Error found", new Date(), new Date(), 0f, 0f, false));
             return "params error";
         }
 

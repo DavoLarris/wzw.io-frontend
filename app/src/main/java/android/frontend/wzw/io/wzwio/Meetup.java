@@ -14,19 +14,21 @@ public class Meetup implements Serializable {
     private Date since;
     private Float latitude;
     private Float longitude;
+    private Boolean open;
 
     public Meetup () {
 
     }
 
-    public Meetup(Long id, String title, String description, Date date, Date since, Float latitude, Float longitude) {
+    public Meetup(Long id, String title, String description, Date date, Date since, Float latitude, Float longitude, Boolean open) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.date = date;
+        this.since = since;
         this.latitude = latitude;
         this.longitude = longitude;
-        this.since = since;
+        this.open = open;
     }
 
     public Long getId() {
@@ -85,6 +87,15 @@ public class Meetup implements Serializable {
         this.longitude = longitude;
     }
 
+    public Boolean isOpen() {
+        return open;
+    }
+
+    public void setOpen(Boolean open) {
+        this.open = open;
+    }
+
+
     @Override
     public String toString() {
         return "Meetup{" +
@@ -95,6 +106,7 @@ public class Meetup implements Serializable {
                 ", longitude=" + since +
                 ", latitude=" + latitude +
                 ", longitude=" + longitude +
+                ", open=" + open +
                 '}';
     }
 }
