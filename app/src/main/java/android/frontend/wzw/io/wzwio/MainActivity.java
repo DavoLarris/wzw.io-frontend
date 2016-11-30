@@ -98,14 +98,16 @@ public class MainActivity extends AppCompatActivity {
             case R.id.action_settings:
                 myIntent = new Intent(MainActivity.this, PreferencesActivity.class);
                 startActivity(myIntent);
+                break;
 
             case R.id.action_about:
                 myIntent = new Intent(MainActivity.this, AboutActivity.class);
                 startActivity(myIntent);
+                break;
             default:
-                return super.onOptionsItemSelected(item);
-
+                break;
         }
+        return super.onOptionsItemSelected(item);
     }
 
 }

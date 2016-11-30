@@ -107,7 +107,7 @@ public class FormActivity extends AppCompatActivity implements View.OnClickListe
         }
 
         String json = "{\"meetup\":{\"id\":1,\"name\":\"" + title.getText() + "\",\"description\":\"" + description.getText() + "\",\"latitude\":" + latitude.getText() + ",\"longitude\":" + longuitude.getText() + ",\"open\":"+ num +"}}";
-        Toast.makeText(this, json+format.parse(meetup_date), Toast.LENGTH_LONG).show();
+        //Toast.makeText(this, json+format.parse(meetup_date), Toast.LENGTH_LONG).show();
 
     }
 
