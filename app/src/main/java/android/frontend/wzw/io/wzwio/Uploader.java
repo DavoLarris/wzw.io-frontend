@@ -7,19 +7,19 @@ import android.os.AsyncTask;
  * Created by DavoLarris on 14/11/2016.
  */
 public class Uploader  extends AsyncTask<String, Void, Void> {
-    private MainActivity mainActivity;
+    private FormActivity formActivity;
 
 
-    public Uploader(MainActivity mainActivity) {
-        attach(mainActivity);
+    public Uploader(FormActivity formActivity) {
+        attach(formActivity);
     }
 
-    public void attach(MainActivity mainActivity) {
-        this.mainActivity = mainActivity;
+    public void attach(FormActivity formActivity) {
+        this.formActivity = formActivity;
     }
 
     public void dettach() {
-        this.mainActivity = null;
+        this.formActivity = null;
     }
 
 
