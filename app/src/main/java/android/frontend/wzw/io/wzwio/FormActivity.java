@@ -2,6 +2,7 @@ package android.frontend.wzw.io.wzwio;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
@@ -108,8 +109,12 @@ public class FormActivity extends AppCompatActivity implements View.OnClickListe
 
         String json = "{\"meetup\":{\"id\":1,\"name\":\"" + title.getText() + "\",\"description\":\"" + description.getText() + "\",\"latitude\":" + latitude.getText() + ",\"longitude\":" + longuitude.getText() + ",\"open\":"+ num +"}}";
         new Uploader(this).execute(URL, json);
-        //Toast.makeText(this, json+format.parse(meetup_date), Toast.LENGTH_LONG).show();
 
+    }
+
+    public void goToMenu() {
+        Intent intent = new Intent(FormActivity.this, MainActivity.class);
+        startActivity(intent);
     }
 
 }

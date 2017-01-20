@@ -1,7 +1,9 @@
 package android.frontend.wzw.io.wzwio;
 
 
+import android.content.Intent;
 import android.os.AsyncTask;
+import android.widget.Toast;
 
 /**
  * Created by DavoLarris on 14/11/2016.
@@ -36,7 +38,8 @@ public class Uploader  extends AsyncTask<String, Void, Void> {
 
     @Override
     protected void onPostExecute(Void unused) {
-
+        Toast.makeText(formActivity, "Meetup created successfully", Toast.LENGTH_LONG).show();
+        formActivity.goToMenu();
     }
 
     @Override
