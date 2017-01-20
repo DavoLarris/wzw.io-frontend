@@ -163,6 +163,7 @@
             android:layout_height="50dp"
             app:srcCompat="@android:drawable/ic_menu_mylocation" />
 
+
         <EditText
             android:id="@+id/latitude"
             android:layout_width="match_parent"
